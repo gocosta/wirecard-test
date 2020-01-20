@@ -1,11 +1,26 @@
 package br.paymentapi.wirecard.models;
 
 import br.paymentapi.wirecard.enums.PaymentType;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "payment")
+@EntityListeners(AuditingEntityListener.class)
 public class Payment {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(name = "amount", nullable = false)
     private Double amount;
+
+    @Column(name = "type", nullable = false)
     private PaymentType paymentType;
+
+    @JoinTable(name = "card")
     private Card card;
 
     public Double getAmount() {
