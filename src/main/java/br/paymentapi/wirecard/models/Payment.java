@@ -23,6 +23,9 @@ public class Payment {
     @JoinTable(name = "card")
     private Card card;
 
+    @JoinTable(name = "card")
+    private Buyer buyer;
+
     public Double getAmount() {
         return amount;
     }
@@ -45,5 +48,13 @@ public class Payment {
 
     public void setCard(Card card) {
         this.card = card;
+    }
+
+    public Buyer getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Buyer buyer) {
+        this.buyer = buyer;
     }
 }

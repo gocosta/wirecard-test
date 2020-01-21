@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+
+<h1>Payment Form</h1>
+
+<form action="pay" method="POST">
+
+    <h2>Buyer Information</h2>
+    <br>
+
+    <label>Name</label>
+    <br>
+    <input name="buyer.name" type="text" required/>
+    <br><br>
+
+    <label>E-mail</label>
+    <br>
+    <input name="buyer.email" type="text" required/>
+    <br><br>
+
+    <label>CPF</label>
+    <br>
+    <input name="buyer.CPF" type="number" max="99999999999999" required/>
+    <br><br>
+
+    <h2>Payment Information</h2>
+    <br>
+
+    <label>Amount</label>
+    <input name="amount" type="number" required/>
+
+    <label>Type</label>
+    <select name="paymentType" required>
+        <option value="CARTAO">Credit Card</option>
+        <option value="BOLETO" selected>Boleto</option>
+    </select>
+
+    <br><br>
+    <div id="cardinfo">
+        <h2>Card Information</h2>
+
+        <label>Holder</label>
+        <br>
+        <input name="card.holder" type="text"/>
+        <br><br>
+
+        <label>Card Number</label>
+        <br>
+        <input name="card.number" type="text" max="9999999999999999"/>
+        <br><br>
+
+        <label>Expiration</label>
+        <input id="expiration" name="card.expiration" type="text"/>
+
+        <label>CVV</label>
+        <input name="card.cvv" type="number" max="999"/>
+        <br><br>
+        <input type="submit">
+    </div>
+</form>
+
+
+</body>
+</html>

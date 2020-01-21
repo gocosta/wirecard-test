@@ -20,7 +20,7 @@ public class Buyer {
     private String email;
 
     @Column(name = "buyer_cpf", nullable = false)
-    private Double CPF;
+    private String CPF;
 
     public String getName() {
         return name;
@@ -38,11 +38,11 @@ public class Buyer {
         this.email = email;
     }
 
-    public Double getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
-    public void setCPF(Double CPF) {
+    public void setCPF(String CPF) {
         this.CPF = CPF;
     }
 }

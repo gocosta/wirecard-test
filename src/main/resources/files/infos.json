@@ -1,0 +1,16 @@
+{
+  "id": 1,
+  "amount": 1.0,
+  "paymentType": "CARTAO",
+  "card": {
+    "holder": "teste",
+    "number": 132,
+    "cvv": 222,
+    "expiration": "2021-12-20"
+  },
+  "buyer": {
+    "name": "demoData",
+    "email": "demoData",
+    "CPF": "132456789"
+  }
+}

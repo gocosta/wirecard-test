@@ -20,7 +20,7 @@ public class Card {
     private String number;
 
     @Column(name = "expiration", nullable = false)
-    private Date expiration;
+    private String expiration;
 
     @Column(name = "cvv", nullable = false)
     private int cvv;
@@ -41,11 +41,11 @@ public class Card {
         this.number = number;
     }
 
-    public Date getExpiration() {
+    public String getExpiration() {
         return expiration;
     }
 
-    public void setExpiration(Date expiration) {
+    public void setExpiration(String expiration) {
         this.expiration = expiration;
     }
 

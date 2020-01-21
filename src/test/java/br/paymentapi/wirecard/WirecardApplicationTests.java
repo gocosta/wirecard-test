@@ -31,7 +31,7 @@ class WirecardApplicationTests {
     }
 
     @Test
-    void showRequest(){
+    void showRequest() {
         String teste = getRootUrl();
 
         Assert.assertNotNull(teste);

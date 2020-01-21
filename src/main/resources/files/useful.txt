@@ -1,0 +1,9 @@
+amount: 1200
+paymentType: CARTAO
+card.holder: Guilherme
+card.number: 4563412367896852
+card.expiration: 10/2022
+card.cvv: 123
+buyer.name: Guilherme+Oliveira
+buyer.email: guilhermeoliveira63@gmail.com
+buyer.CPF: 41551086824
