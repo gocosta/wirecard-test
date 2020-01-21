@@ -23,7 +23,7 @@ public class Payment {
     @JoinTable(name = "card")
     private Card card;
 
-    @JoinTable(name = "card")
+    @JoinTable(name = "buyer")
     private Buyer buyer;
 
     public Double getAmount() {
