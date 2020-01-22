@@ -1,28 +1,29 @@
 package br.paymentapi.wirecard.models;
 
 import br.paymentapi.wirecard.enums.PaymentType;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "payment")
-@EntityListeners(AuditingEntityListener.class)
 public class Payment {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue
     private long id;
 
-    @Column(name = "amount", nullable = false)
+    @NotBlank
     private Double amount;
 
-    @Column(name = "type", nullable = false)
+    @NotBlank
     private PaymentType paymentType;
 
+    @OneToOne
     @JoinTable(name = "card")
     private Card card;
 
+    @OneToOne
     @JoinTable(name = "buyer")
     private Buyer buyer;
 
@@ -56,5 +57,13 @@ public class Payment {
 
     public void setBuyer(Buyer buyer) {
         this.buyer = buyer;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

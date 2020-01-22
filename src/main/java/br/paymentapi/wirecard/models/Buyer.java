@@ -1,25 +1,20 @@
 package br.paymentapi.wirecard.models;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "buyer")
-@EntityListeners(AuditingEntityListener.class)
 public class Buyer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
-    @Column(name = "buyer_name", nullable = false)
+    @NotBlank
     private String name;
-
-    @Column(name = "buyer_email", nullable = false)
+    @NotBlank
     private String email;
-
-    @Column(name = "buyer_cpf", nullable = false)
+    @NotBlank
     private String CPF;
 
     public String getName() {

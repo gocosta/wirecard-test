@@ -1,28 +1,20 @@
 package br.paymentapi.wirecard.models;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "card")
-@EntityListeners(AuditingEntityListener.class)
 public class Card {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "holder", nullable = false)
     private String holder;
 
-    @Column(name = "cardnumber", nullable = false)
     private String number;
 
-    @Column(name = "expiration", nullable = false)
     private String expiration;
 
-    @Column(name = "cvv", nullable = false)
     private int cvv;
 
     public String getHolder() {
