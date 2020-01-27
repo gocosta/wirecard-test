@@ -1,0 +1,163 @@
+{
+	"info": {
+		"_postman_id": "cb284bd9-f708-42f4-8c47-f1a039967ac7",
+		"name": "wirecard-teste-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getAllPayments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/payments",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"payments"
+					]
+				},
+				"description": "Get all the payments in database"
+			},
+			"response": []
+		},
+		{
+			"name": "getPayment",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "id",
+						"value": "1",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/payment/1?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"payment",
+						"1"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Get a single payment by id"
+			},
+			"response": []
+		},
+		{
+			"name": "Do payment",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ede259f4-4f74-4f48-83a9-14edaa64d15f",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "amount",
+							"value": " 1200",
+							"description": "Amount of payment",
+							"type": "text"
+						},
+						{
+							"key": "paymentType",
+							"value": " CARTAO",
+							"description": "Type of payment",
+							"type": "text"
+						},
+						{
+							"key": "card.holder",
+							"value": " Guilherme",
+							"description": "Card Credit Holder name",
+							"type": "text"
+						},
+						{
+							"key": "card.number",
+							"value": " 4563412367896852",
+							"description": "Card Credit Number",
+							"type": "text"
+						},
+						{
+							"key": "card.expiration",
+							"value": " 10/2022",
+							"description": "Card Credit Expiration date",
+							"type": "text"
+						},
+						{
+							"key": "card.cvv",
+							"value": " 123",
+							"description": "Card Credit CVV",
+							"type": "text"
+						},
+						{
+							"key": "buyer.name",
+							"value": " Guilherme+Oliveira",
+							"description": "Buyer name",
+							"type": "text"
+						},
+						{
+							"key": "buyer.email",
+							"value": " guilhermeoliveira63@gmail.com",
+							"description": "Buyer email",
+							"type": "text"
+						},
+						{
+							"key": "buyer.CPF",
+							"value": " 41551086824",
+							"description": "buyer CPF",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/pay",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"pay"
+					]
+				},
+				"description": "execute the payment and persist"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

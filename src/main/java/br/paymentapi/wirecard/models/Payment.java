@@ -3,7 +3,7 @@ package br.paymentapi.wirecard.models;
 import br.paymentapi.wirecard.enums.PaymentType;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "payment")
@@ -13,18 +13,18 @@ public class Payment {
     @GeneratedValue
     private long id;
 
-    @NotBlank
+    @NotNull
     private Double amount;
 
-    @NotBlank
+    @NotNull
     private PaymentType paymentType;
 
-    @OneToOne
-    @JoinTable(name = "card")
+    @OneToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinColumn(name = "card_id", referencedColumnName = "id")
     private Card card;
 
-    @OneToOne
-    @JoinTable(name = "buyer")
+    @OneToOne(cascade={CascadeType.PERSIST,CascadeType.MERGE})
+    @JoinColumn(name = "buyer_id", referencedColumnName = "id")
     private Buyer buyer;
 
     public Double getAmount() {
@@ -65,5 +65,55 @@ public class Payment {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public static final class PaymentBuilder {
+        private long id;
+        private Double amount;
+        private PaymentType paymentType;
+        private Card card;
+        private Buyer buyer;
+
+        public PaymentBuilder() {
+        }
+
+        public static PaymentBuilder aPayment() {
+            return new PaymentBuilder();
+        }
+
+        public PaymentBuilder withId(long id) {
+            this.id = id;
+            return this;
+        }
+
+        public PaymentBuilder withAmount(Double amount) {
+            this.amount = amount;
+            return this;
+        }
+
+        public PaymentBuilder withPaymentType(PaymentType paymentType) {
+            this.paymentType = paymentType;
+            return this;
+        }
+
+        public PaymentBuilder withCard(Card card) {
+            this.card = card;
+            return this;
+        }
+
+        public PaymentBuilder withBuyer(Buyer buyer) {
+            this.buyer = buyer;
+            return this;
+        }
+
+        public Payment build() {
+            Payment payment = new Payment();
+            payment.setId(id);
+            payment.setAmount(amount);
+            payment.setPaymentType(paymentType);
+            payment.setCard(card);
+            payment.setBuyer(buyer);
+            return payment;
+        }
     }
 }
